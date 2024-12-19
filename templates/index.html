@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Blog</title>
+</head>
+<body>
+   <h1>Blog</h1>
+
+   
+   <p>Posts: {{ posts }}</p>
+
+   {% if posts %}
+   <ul>
+       {% for post in posts %}
+           <li>
+               <h2>{{ post[1] }}</h2>  <!-- post[1] is the title -->
+               <p>{{ post[2] }}</p>    <!-- post[2] is the content -->
+               <p><small>Posted on {{ post[3] }}</small></p>  <!-- post[3] is the created_at -->
+               <a href="{{ url_for('post', id=post[0]) }}">Read more</a>
+           </li>
+       {% endfor %}
+   </ul>
+   {% else %}
+   <p>No posts available</p>
+   {% endif %}
+</body>
+</html>
